@@ -19,6 +19,10 @@ export type NoteListResponse = {
 
 axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
 
+// додаємо заголовок з токеном
+axios.defaults.headers.common['Authorization'] =
+  `Bearer ${process.env.VITE_NOTEHUB_TOKEN}`;
+
 export const getNotes = async () => {
   const res = await axios.get<NoteListResponse>('/notes');
   return res.data;
